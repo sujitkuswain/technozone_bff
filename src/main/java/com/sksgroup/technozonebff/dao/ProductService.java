@@ -11,7 +11,8 @@ public class ProductService {
         return List.of(
                 new ProductDTO("Printer", 10),
                 new ProductDTO("Laptop", 30),
-                new ProductDTO("Mouse", 5)
+                new ProductDTO("Mouse", 5),
+                new ProductDTO("Camera", 7)
         );
     }
 }

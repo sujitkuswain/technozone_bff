@@ -1,10 +1,9 @@
-name: cicd flow
+name: CI/CD Workflow
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - '*'
 
 jobs:
   build:
