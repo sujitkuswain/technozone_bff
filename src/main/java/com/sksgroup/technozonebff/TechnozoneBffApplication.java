@@ -9,5 +9,4 @@ public class TechnozoneBffApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TechnozoneBffApplication.class, args);
 	}
-
 }
