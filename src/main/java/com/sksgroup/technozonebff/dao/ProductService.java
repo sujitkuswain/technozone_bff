@@ -10,7 +10,8 @@ public class ProductService {
     public List<ProductDTO> getProducts(){
         return List.of(
                 new ProductDTO("Printer", 10),
-                new ProductDTO("Laptop", 30)
+                new ProductDTO("Laptop", 30),
+                new ProductDTO("Mouse", 5)
         );
     }
 }
