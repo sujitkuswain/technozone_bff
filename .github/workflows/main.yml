@@ -35,7 +35,7 @@ jobs:
 
   dockerize:
     runs-on: ubuntu-latest
-    needs: build
+    needs: test
 
     steps:
       - name: Checkout repository
@@ -43,4 +43,4 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t your-docker-image-name .
+          docker build -t technozone-bff-image:latest .
