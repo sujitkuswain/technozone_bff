@@ -32,3 +32,15 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - run: mvn test
+
+  dockerize:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t your-docker-image-name .
