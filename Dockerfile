@@ -1,5 +1,7 @@
 FROM openjdk:17.0.1
 
-COPY target/technozone-bff-0.0.1-SNAPSHOT.jar /app/technozone-bff.jar
+EXPOSE 8080
 
-CMD ["java", "-jar", "/app/technozone-bff.jar"]
+ADD target/technozone-bff.jar technozone-bff.jar
+
+CMD ["java", "-jar", "/technozone-bff.jar"]
