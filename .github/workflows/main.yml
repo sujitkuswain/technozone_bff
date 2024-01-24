@@ -19,7 +19,7 @@ jobs:
           cache: maven
       - run: mvn clean install
 
-      - name: Build & push Docker image
+      - name: Build and Push Docker image
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
           image: sujitkuswain9/technozone-bff
@@ -28,6 +28,17 @@ jobs:
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+    - name: Pull Docker Image
+      run: sudo docker pull sujitkuswain9/technozone-bff:latest
+    - name: Delete old Docker container
+      run: docker rm -f technozone-bff-container || true
+    - name: Run docker container
+      run: sudo docker run -d -p 8080:8080 --name technozone-bff-container sujitkuswain9/technozone-bff
 
   test:
     runs-on: ubuntu-latest
