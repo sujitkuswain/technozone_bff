@@ -27,7 +27,7 @@ jobs:
         run: docker push sujitkuswain9/technozone-bff:latest
   deploy:
     needs: build
-    runs-on: [technozone_bff]
+    runs-on: [self-hosted]
     steps:
       - name: pull image from docker hub
         run: docker pull sujitkuswain9/technozone-bff:latest
