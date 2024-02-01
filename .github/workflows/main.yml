@@ -27,12 +27,15 @@ jobs:
         run: docker push sujitkuswain9/technozone-bff:latest
   deploy:
     needs: build
-    runs-on: [self-hosted]
+#    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
       - name: pull image from docker hub
         run: docker pull sujitkuswain9/technozone-bff:latest
       - name: delete old container
-        run: docker rm -f technozone_bff_container
+        run: docker rm -f technozone_bff_container || true
       - name: run docker container
         run: docker run -d -p 8080:8080 --name technozone_bff_container sujitkuswain9/technozone-bff
 
