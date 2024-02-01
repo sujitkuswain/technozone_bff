@@ -27,8 +27,8 @@ jobs:
         run: docker push sujitkuswain9/technozone-bff:latest
   deploy:
     needs: build
-#    runs-on: [self-hosted]
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
+#    runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
