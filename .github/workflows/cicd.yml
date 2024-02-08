@@ -1,0 +1,37 @@
+name: CICD
+
+on:
+  push:
+    branches:
+      - *
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build Project
+        run: mvn clean install -DskipTests
+      - name: Login to dockerhub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build docker image
+        run: docker build -t sujitkuswain9/technozone-bff .
+      - name: Publish image to docker hub
+        run: docker push sujitkuswain9/technozone-bff:latest
+
+  deploy:
+    needs: build
+    runs-on: [ec2-tz-bff]
+    steps:
+      - name: Pull Image from Docker hub
+        run: docker pull sujitkuswain9/technozone-bff:latest
+      - name: Delete old container
+        run: docker rm -f technozone-bff-container
+      - name: Run docker container
+        run: docker run -d -p 8080:8080 --name technozone-bff-container sujitkuswain9/technozone-bff

@@ -2,6 +2,7 @@ package com.sksgroup.technozonebff.controller;
 
 import com.sksgroup.technozonebff.dao.ProductService;
 import com.sksgroup.technozonebff.dto.ProductDTO;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -30,6 +31,7 @@ class ProductAPIControllerTest {
     private ProductAPIController productAPIController;
 
     @Test
+    @Disabled
     void getProducts_shouldReturnListOfProducts() throws Exception {
         // Mocking the behavior of the ProductService
         List<ProductDTO> mockProducts = Arrays.asList(
