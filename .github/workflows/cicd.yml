@@ -27,7 +27,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: [ec2-tz-bff]
+    runs-on: [self-hosted]
     steps:
       - name: Pull Image from Docker hub
         run: docker pull sujitkuswain9/technozone-bff:latest
