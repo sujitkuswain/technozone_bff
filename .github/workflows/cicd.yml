@@ -25,13 +25,13 @@ jobs:
       - name: Publish image to docker hub
         run: docker push sujitkuswain9/technozone-bff:latest
 
-  deploy:
-    needs: build
-    runs-on: [self-hosted]
-    steps:
-      - name: Pull Image from Docker hub
-        run: sudo docker pull sujitkuswain9/technozone-bff:latest
-      - name: Delete old container
-        run: sudo docker rm -f technozone-bff-container
-      - name: Run docker container
-        run: sudo docker run -d -p 8080:8080 --name technozone-bff-container sujitkuswain9/technozone-bff
+#  deploy:
+#    needs: build
+#    runs-on: [self-hosted]
+#    steps:
+#      - name: Pull Image from Docker hub
+#        run: sudo docker pull sujitkuswain9/technozone-bff:latest
+#      - name: Delete old container
+#        run: sudo docker rm -f technozone-bff-container
+#      - name: Run docker container
+#        run: sudo docker run -d -p 8080:8080 --name technozone-bff-container sujitkuswain9/technozone-bff
